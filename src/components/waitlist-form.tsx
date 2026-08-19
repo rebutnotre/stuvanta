@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState, useState } from "react";
 import { submitWaitlist, type WaitlistActionState } from "@/app/actions/waitlist";
 import { EDUCATION_LEVEL_OPTIONS, yearOptionsFor } from "@/lib/config";
@@ -53,6 +54,13 @@ export function WaitlistForm() {
             placeholder="you@student.unimelb.edu.au"
             className={inputClass}
           />
+          <p className="mt-1 text-xs text-muted">
+            We&rsquo;ll only email you about launch — see our{" "}
+            <Link href="/privacy" className="underline underline-offset-2 hover:text-accent">
+              privacy policy
+            </Link>
+            .
+          </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>

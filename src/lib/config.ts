@@ -1,5 +1,8 @@
 export const BUSINESS_NAME = "Stuvanta";
 
+// Update if a custom domain replaces the Vercel one.
+export const SITE_URL = "https://stuvanta.vercel.app";
+
 export const CAMPUS_OPTIONS = ["University of Melbourne (Parkville)"] as const;
 
 export const SEMESTER_PRICE_DISPLAY = "$15";

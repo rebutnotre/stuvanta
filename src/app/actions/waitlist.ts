@@ -3,7 +3,7 @@
 import { waitlistSchema, isEduAuEmail } from "@/lib/validation";
 import { getSupabasePublicClient } from "@/lib/supabase";
 import { getResendClient, EMAIL_FROM } from "@/lib/resend";
-import { BUSINESS_NAME } from "@/lib/config";
+import { BUSINESS_NAME, CAMPUS_OPTIONS } from "@/lib/config";
 
 export type WaitlistActionState = {
   status: "idle" | "success" | "error";
@@ -16,7 +16,6 @@ export async function submitWaitlist(
 ): Promise<WaitlistActionState> {
   const parsed = waitlistSchema.safeParse({
     email: formData.get("email"),
-    campus: formData.get("campus"),
     educationLevel: formData.get("educationLevel"),
     yearLevel: formData.get("yearLevel"),
   });
@@ -28,13 +27,12 @@ export async function submitWaitlist(
     };
   }
 
-  const { email, campus, educationLevel, yearLevel } = parsed.data;
+  const { email, educationLevel, yearLevel } = parsed.data;
   const isEduAu = isEduAuEmail(email);
 
   const supabase = getSupabasePublicClient();
   const { error } = await supabase.from("waitlist_signups").insert({
     email,
-    campus,
     education_level: educationLevel,
     year_level: yearLevel,
     is_edu_au: isEduAu,
@@ -61,7 +59,7 @@ export async function submitWaitlist(
       from: EMAIL_FROM,
       to: email,
       subject: `You're on the ${BUSINESS_NAME} waitlist`,
-      text: `Thanks for joining the ${BUSINESS_NAME} waitlist!\n\nWe'll email you as soon as membership goes live at ${campus}.\n\n— The ${BUSINESS_NAME} team`,
+      text: `Thanks for joining the ${BUSINESS_NAME} waitlist!\n\nWe'll email you as soon as membership goes live at ${CAMPUS_OPTIONS[0]}.\n\n— The ${BUSINESS_NAME} team`,
     });
   } catch (err) {
     // The signup itself succeeded — don't fail the request just because the email did.

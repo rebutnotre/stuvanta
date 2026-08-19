@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
   if (type === "waitlist") {
     const { data, error } = await supabase
       .from("waitlist_signups")
-      .select("email, campus, education_level, year_level, is_edu_au, created_at")
+      .select("email, education_level, year_level, is_edu_au, created_at")
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -19,10 +19,9 @@ export async function GET(request: NextRequest) {
     }
 
     const csv = toCsv(
-      ["email", "campus", "education_level", "year_level", "is_edu_au", "created_at"],
+      ["email", "education_level", "year_level", "is_edu_au", "created_at"],
       (data ?? []).map((row) => [
         row.email,
-        row.campus,
         row.education_level,
         row.year_level,
         row.is_edu_au,

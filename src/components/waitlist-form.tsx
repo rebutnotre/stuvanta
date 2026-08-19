@@ -2,7 +2,7 @@
 
 import { useActionState, useState } from "react";
 import { submitWaitlist, type WaitlistActionState } from "@/app/actions/waitlist";
-import { CAMPUS_OPTIONS, EDUCATION_LEVEL_OPTIONS, yearOptionsFor } from "@/lib/config";
+import { EDUCATION_LEVEL_OPTIONS, yearOptionsFor } from "@/lib/config";
 
 const initialState: WaitlistActionState = { status: "idle" };
 const DEFAULT_EDUCATION_LEVEL = "University";
@@ -53,24 +53,6 @@ export function WaitlistForm() {
             placeholder="you@student.unimelb.edu.au"
             className={inputClass}
           />
-        </div>
-        <div>
-          <label htmlFor="campus" className="block text-sm font-medium text-foreground">
-            Campus
-          </label>
-          <select
-            id="campus"
-            name="campus"
-            required
-            defaultValue={CAMPUS_OPTIONS[0]}
-            className={inputClass}
-          >
-            {CAMPUS_OPTIONS.map((campus) => (
-              <option key={campus} value={campus}>
-                {campus}
-              </option>
-            ))}
-          </select>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>

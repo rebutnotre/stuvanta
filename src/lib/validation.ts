@@ -9,7 +9,6 @@ export function isEduAuEmail(email: string): boolean {
 export const waitlistSchema = z
   .object({
     email: z.string().trim().toLowerCase().email("Enter a valid email address"),
-    campus: z.string().trim().min(1, "Choose your campus"),
     educationLevel: z.enum(EDUCATION_LEVEL_OPTIONS, {
       message: "Choose your level of education",
     }),

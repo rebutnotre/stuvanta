@@ -6,7 +6,6 @@ export const dynamic = "force-dynamic";
 type WaitlistRow = {
   id: string;
   email: string;
-  campus: string;
   education_level: string;
   year_level: string;
   is_edu_au: boolean;
@@ -31,7 +30,7 @@ export default async function AdminPage() {
   const [waitlistRes, venuesRes] = await Promise.all([
     supabase
       .from("waitlist_signups")
-      .select("id, email, campus, education_level, year_level, is_edu_au, created_at")
+      .select("id, email, education_level, year_level, is_edu_au, created_at")
       .order("created_at", { ascending: false }),
     supabase
       .from("venue_leads")
@@ -77,7 +76,6 @@ export default async function AdminPage() {
                   <tr>
                     <th className="px-3 py-2">Email</th>
                     <th className="px-3 py-2">.edu.au?</th>
-                    <th className="px-3 py-2">Campus</th>
                     <th className="px-3 py-2">Education level</th>
                     <th className="px-3 py-2">Year level</th>
                     <th className="px-3 py-2">Joined</th>
@@ -88,7 +86,6 @@ export default async function AdminPage() {
                     <tr key={row.id}>
                       <td className="px-3 py-2">{row.email}</td>
                       <td className="px-3 py-2">{row.is_edu_au ? "Yes" : "No"}</td>
-                      <td className="px-3 py-2">{row.campus}</td>
                       <td className="px-3 py-2">{row.education_level}</td>
                       <td className="px-3 py-2">{row.year_level}</td>
                       <td className="px-3 py-2">{new Date(row.created_at).toLocaleString()}</td>
@@ -96,7 +93,7 @@ export default async function AdminPage() {
                   ))}
                   {waitlist.length === 0 ? (
                     <tr>
-                      <td className="px-3 py-4 text-muted" colSpan={6}>
+                      <td className="px-3 py-4 text-muted" colSpan={5}>
                         No signups yet.
                       </td>
                     </tr>

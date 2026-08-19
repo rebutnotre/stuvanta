@@ -1,4 +1,5 @@
 import {
+  BUSINESS_NAME,
   CAMPUS_OPTIONS,
   MIN_DISCOUNT_PERCENT,
   SEMESTER_PRICE_DISPLAY,
@@ -18,7 +19,10 @@ export function Hero() {
         className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-accent-warm/10 blur-3xl"
       />
       <div className="relative mx-auto max-w-3xl text-center">
-        <p className="text-sm font-semibold uppercase tracking-wide text-accent">
+        <p className="font-heading text-2xl font-extrabold tracking-tight text-foreground">
+          {BUSINESS_NAME}
+        </p>
+        <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-accent">
           Launching at {CAMPUS_OPTIONS[0]}
         </p>
         <h1 className="mt-3 font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">

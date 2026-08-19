@@ -7,7 +7,8 @@ type WaitlistRow = {
   id: string;
   email: string;
   campus: string;
-  course_year: string;
+  education_level: string;
+  year_level: string;
   is_edu_au: boolean;
   created_at: string;
 };
@@ -30,7 +31,7 @@ export default async function AdminPage() {
   const [waitlistRes, venuesRes] = await Promise.all([
     supabase
       .from("waitlist_signups")
-      .select("id, email, campus, course_year, is_edu_au, created_at")
+      .select("id, email, campus, education_level, year_level, is_edu_au, created_at")
       .order("created_at", { ascending: false }),
     supabase
       .from("venue_leads")
@@ -77,7 +78,8 @@ export default async function AdminPage() {
                     <th className="px-3 py-2">Email</th>
                     <th className="px-3 py-2">.edu.au?</th>
                     <th className="px-3 py-2">Campus</th>
-                    <th className="px-3 py-2">Course year</th>
+                    <th className="px-3 py-2">Education level</th>
+                    <th className="px-3 py-2">Year level</th>
                     <th className="px-3 py-2">Joined</th>
                   </tr>
                 </thead>
@@ -87,13 +89,14 @@ export default async function AdminPage() {
                       <td className="px-3 py-2">{row.email}</td>
                       <td className="px-3 py-2">{row.is_edu_au ? "Yes" : "No"}</td>
                       <td className="px-3 py-2">{row.campus}</td>
-                      <td className="px-3 py-2">{row.course_year}</td>
+                      <td className="px-3 py-2">{row.education_level}</td>
+                      <td className="px-3 py-2">{row.year_level}</td>
                       <td className="px-3 py-2">{new Date(row.created_at).toLocaleString()}</td>
                     </tr>
                   ))}
                   {waitlist.length === 0 ? (
                     <tr>
-                      <td className="px-3 py-4 text-muted" colSpan={5}>
+                      <td className="px-3 py-4 text-muted" colSpan={6}>
                         No signups yet.
                       </td>
                     </tr>

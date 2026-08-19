@@ -1,31 +1,45 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useState } from "react";
 import { submitWaitlist, type WaitlistActionState } from "@/app/actions/waitlist";
-import { CAMPUS_OPTIONS, COURSE_YEAR_OPTIONS } from "@/lib/config";
+import { CAMPUS_OPTIONS, EDUCATION_LEVEL_OPTIONS, yearOptionsFor } from "@/lib/config";
 
 const initialState: WaitlistActionState = { status: "idle" };
+const DEFAULT_EDUCATION_LEVEL = "University";
 
 const inputClass =
   "mt-1 w-full rounded-lg border border-border px-3 py-2 text-base text-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30";
 
 export function WaitlistForm() {
   const [state, formAction, isPending] = useActionState(submitWaitlist, initialState);
-  const formRef = useRef<HTMLFormElement>(null);
+  const [educationLevel, setEducationLevel] = useState<string>(DEFAULT_EDUCATION_LEVEL);
 
-  useEffect(() => {
+  // Reset to a fresh form instance after a successful submission. Adjusting
+  // state during render (guarded against loops) rather than in a useEffect,
+  // per https://react.dev/learn/you-might-not-need-an-effect — avoids an
+  // extra post-commit render just to clear the form.
+  const [prevStatus, setPrevStatus] = useState(state.status);
+  const [formInstanceKey, setFormInstanceKey] = useState(0);
+  if (state.status !== prevStatus) {
+    setPrevStatus(state.status);
     if (state.status === "success") {
-      formRef.current?.reset();
+      setFormInstanceKey((key) => key + 1);
+      setEducationLevel(DEFAULT_EDUCATION_LEVEL);
     }
-  }, [state]);
+  }
+
+  const yearOptions = yearOptionsFor(educationLevel);
 
   return (
-    <div id="waitlist" className="rounded-2xl border border-border bg-white p-6 shadow-sm ring-1 ring-black/5 sm:p-8">
+    <div
+      id="waitlist"
+      className="rounded-2xl border border-border bg-white p-6 shadow-sm ring-1 ring-black/5 sm:p-8"
+    >
       <h2 className="font-heading text-xl font-bold text-foreground">Join the waitlist</h2>
       <p className="mt-1 text-sm text-muted">
         Two minutes. We&rsquo;ll email you the moment membership opens.
       </p>
-      <form ref={formRef} action={formAction} className="mt-5 space-y-4">
+      <form key={formInstanceKey} action={formAction} className="mt-5 space-y-4">
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-foreground">
             Email
@@ -58,20 +72,48 @@ export function WaitlistForm() {
             ))}
           </select>
         </div>
-        <div>
-          <label htmlFor="courseYear" className="block text-sm font-medium text-foreground">
-            Course year
-          </label>
-          <select id="courseYear" name="courseYear" required defaultValue="" className={inputClass}>
-            <option value="" disabled>
-              Choose one
-            </option>
-            {COURSE_YEAR_OPTIONS.map((year) => (
-              <option key={year} value={year}>
-                {year}
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="educationLevel" className="block text-sm font-medium text-foreground">
+              Level of education
+            </label>
+            <select
+              id="educationLevel"
+              name="educationLevel"
+              required
+              defaultValue={DEFAULT_EDUCATION_LEVEL}
+              onChange={(e) => setEducationLevel(e.target.value)}
+              className={inputClass}
+            >
+              {EDUCATION_LEVEL_OPTIONS.map((level) => (
+                <option key={level} value={level}>
+                  {level}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="yearLevel" className="block text-sm font-medium text-foreground">
+              Year level
+            </label>
+            <select
+              id="yearLevel"
+              name="yearLevel"
+              required
+              defaultValue=""
+              key={educationLevel}
+              className={inputClass}
+            >
+              <option value="" disabled>
+                Choose one
               </option>
-            ))}
-          </select>
+              {yearOptions.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <button
           type="submit"

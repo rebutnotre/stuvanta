@@ -7,7 +7,11 @@ export const SEMESTER_PRICE_GST_NOTE = "GST inclusive";
 
 export const MIN_DISCOUNT_PERCENT = 15;
 
-export const COURSE_YEAR_OPTIONS = [
+export const EDUCATION_LEVEL_OPTIONS = ["High school", "University"] as const;
+
+export const HIGH_SCHOOL_YEAR_OPTIONS = ["Year 10", "Year 11", "Year 12"] as const;
+
+export const UNIVERSITY_YEAR_OPTIONS = [
   "1st year",
   "2nd year",
   "3rd year",
@@ -15,6 +19,12 @@ export const COURSE_YEAR_OPTIONS = [
   "Postgrad",
   "Other",
 ] as const;
+
+export function yearOptionsFor(
+  educationLevel: string,
+): readonly string[] {
+  return educationLevel === "High school" ? HIGH_SCHOOL_YEAR_OPTIONS : UNIVERSITY_YEAR_OPTIONS;
+}
 
 export const VENUE_CATEGORY_OPTIONS = [
   "Cafe",

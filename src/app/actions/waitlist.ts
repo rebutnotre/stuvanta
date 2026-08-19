@@ -17,7 +17,8 @@ export async function submitWaitlist(
   const parsed = waitlistSchema.safeParse({
     email: formData.get("email"),
     campus: formData.get("campus"),
-    courseYear: formData.get("courseYear"),
+    educationLevel: formData.get("educationLevel"),
+    yearLevel: formData.get("yearLevel"),
   });
 
   if (!parsed.success) {
@@ -27,14 +28,15 @@ export async function submitWaitlist(
     };
   }
 
-  const { email, campus, courseYear } = parsed.data;
+  const { email, campus, educationLevel, yearLevel } = parsed.data;
   const isEduAu = isEduAuEmail(email);
 
   const supabase = getSupabasePublicClient();
   const { error } = await supabase.from("waitlist_signups").insert({
     email,
     campus,
-    course_year: courseYear,
+    education_level: educationLevel,
+    year_level: yearLevel,
     is_edu_au: isEduAu,
   });
 

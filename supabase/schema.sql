@@ -7,7 +7,8 @@ create table if not exists waitlist_signups (
   id uuid primary key default gen_random_uuid(),
   email text not null unique,
   campus text not null,
-  course_year text not null,
+  education_level text not null,
+  year_level text not null,
   is_edu_au boolean not null default false,
   created_at timestamptz not null default now()
 );

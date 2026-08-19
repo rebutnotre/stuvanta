@@ -7,21 +7,28 @@
  * a system-preference toggle.
  */
 /*
- * Accent and accent-2 are sampled directly from public/logo.png (the "T"
- * and second "A" in VANTA), darkened just enough to clear WCAG AA contrast
- * on white — so the site's palette is the actual brand colors, not an
- * invented green/amber that happened to not match the logo.
+ * accent (blue), accent-2 (purple), and accent-3 (green) are all sampled
+ * directly from public/logo.png (the "T" and both "A"s in VANTA),
+ * darkened just enough to clear WCAG AA contrast on white — so the
+ * site's palette is the actual brand colors, not invented ones.
+ *
+ * Sections rotate through adjacent pairs off this 3-color wheel
+ * (purple+blue, blue+green, green+purple, ...) rather than reusing the
+ * same two colors everywhere — see hero/break-even/sample-venues/faq.
  */
 :root {
   --background: #ffffff;
   --surface: #eff6f7;
   --surface-2: #f4f1f8;
+  --surface-3: #f2f6ea;
   --foreground: #0f172a;
   --muted: #475569;
   --accent: #2d6e80;
   --accent-foreground: #ffffff;
   --accent-2: #6e5a96;
   --accent-2-foreground: #ffffff;
+  --accent-3: #5a7a2e;
+  --accent-3-foreground: #ffffff;
   --border: #e2e8f0;
 }
 
@@ -29,12 +36,15 @@
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-2: var(--accent-2);
   --color-accent-2-foreground: var(--accent-2-foreground);
+  --color-accent-3: var(--accent-3);
+  --color-accent-3-foreground: var(--accent-3-foreground);
   --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

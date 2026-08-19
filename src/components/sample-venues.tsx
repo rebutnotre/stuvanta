@@ -8,7 +8,7 @@ export function SampleVenues() {
           <h2 className="font-heading text-xl font-bold text-foreground">
             What it&rsquo;ll look like
           </h2>
-          <span className="rounded-full bg-surface-2 px-3 py-1 text-xs font-semibold text-accent-2">
+          <span className="rounded-full bg-surface-3 px-3 py-1 text-xs font-semibold text-accent-3">
             Example venues — not signed up yet
           </span>
         </div>
@@ -26,7 +26,7 @@ export function SampleVenues() {
                 <p className="font-medium text-foreground">{venue.name}</p>
                 <span
                   className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-bold text-white ${
-                    index % 2 === 0 ? "bg-accent" : "bg-accent-2"
+                    index % 2 === 0 ? "bg-accent-3" : "bg-accent-2"
                   }`}
                 >
                   {venue.discountPercent}% off

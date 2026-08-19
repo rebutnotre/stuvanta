@@ -36,7 +36,7 @@ export function Faq() {
             <div
               key={faq.question}
               className={`rounded-lg border-l-4 bg-white py-3 pl-4 pr-2 ${
-                index % 2 === 0 ? "border-accent" : "border-accent-warm"
+                index % 2 === 0 ? "border-accent" : "border-accent-2"
               }`}
             >
               <dt className="font-semibold text-foreground">{faq.question}</dt>

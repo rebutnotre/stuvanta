@@ -13,7 +13,7 @@ export function BreakEven() {
             <p className="mt-1 text-sm text-muted">Membership, one semester</p>
           </div>
           <div>
-            <p className="font-heading text-3xl font-extrabold text-accent-warm">
+            <p className="font-heading text-3xl font-extrabold text-accent-2">
               {MIN_DISCOUNT_PERCENT}%+
             </p>
             <p className="mt-1 text-sm text-muted">Minimum discount, every venue</p>

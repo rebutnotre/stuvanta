@@ -17,7 +17,7 @@ export function Hero() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-accent-warm/10 blur-3xl"
+        className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-accent-2/10 blur-3xl"
       />
       <div className="relative mx-auto max-w-3xl text-center">
         <Image
@@ -26,14 +26,14 @@ export function Hero() {
           width={396}
           height={370}
           priority
-          className="mx-auto h-20 w-auto sm:h-24"
+          className="mx-auto h-20 w-auto rounded-2xl shadow-sm sm:h-24"
         />
         <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-accent">
           Launching at {CAMPUS_OPTIONS[0]}
         </p>
         <h1 className="mt-3 font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
           Students <span className="text-accent">save more</span>. Venues{" "}
-          <span className="text-accent-warm">sell more</span>.
+          <span className="text-accent-2">sell more</span>.
         </h1>
         <p className="mt-4 text-lg text-muted">
           {SEMESTER_PRICE_DISPLAY} a semester ({SEMESTER_PRICE_GST_NOTE}) gets you{" "}

@@ -6,29 +6,35 @@
  * in daylight and by bar staff in dim venues — high, fixed contrast beats
  * a system-preference toggle.
  */
+/*
+ * Accent and accent-2 are sampled directly from public/logo.png (the "T"
+ * and second "A" in VANTA), darkened just enough to clear WCAG AA contrast
+ * on white — so the site's palette is the actual brand colors, not an
+ * invented green/amber that happened to not match the logo.
+ */
 :root {
   --background: #ffffff;
-  --surface: #f4faf6;
-  --surface-warm: #fdf5e9;
+  --surface: #eff6f7;
+  --surface-2: #f4f1f8;
   --foreground: #0f172a;
   --muted: #475569;
-  --accent: #047857;
+  --accent: #2d6e80;
   --accent-foreground: #ffffff;
-  --accent-warm: #b45309;
-  --accent-warm-foreground: #ffffff;
+  --accent-2: #6e5a96;
+  --accent-2-foreground: #ffffff;
   --border: #e2e8f0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
-  --color-surface-warm: var(--surface-warm);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent-warm: var(--accent-warm);
-  --color-accent-warm-foreground: var(--accent-warm-foreground);
+  --color-accent-2: var(--accent-2);
+  --color-accent-2-foreground: var(--accent-2-foreground);
   --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

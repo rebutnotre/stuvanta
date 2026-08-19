@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { submitVenueLead, type VenueActionState } from "@/app/actions/venue";
-import { VENUE_CATEGORY_OPTIONS } from "@/lib/config";
+import { MIN_DISCOUNT_PERCENT, VENUE_CATEGORY_OPTIONS } from "@/lib/config";
 
 const initialState: VenueActionState = { status: "idle" };
 
@@ -80,14 +80,15 @@ export function VenueLeadForm() {
       </div>
       <div>
         <label htmlFor="discountConsidered" className={labelClass}>
-          What discount would you consider offering members? (must be exclusive, 20% minimum)
+          What discount would you consider offering members? (must be exclusive,{" "}
+          {MIN_DISCOUNT_PERCENT}% minimum)
         </label>
         <textarea
           id="discountConsidered"
           name="discountConsidered"
           required
           rows={3}
-          placeholder="e.g. 20% off dine-in, Sunday–Thursday"
+          placeholder={`e.g. ${MIN_DISCOUNT_PERCENT}% off dine-in, Sunday–Thursday`}
           className={inputClass}
         />
       </div>

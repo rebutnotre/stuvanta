@@ -18,8 +18,8 @@ export const SAMPLE_VENUES: SampleVenue[] = [
     name: "Example: Parkville Coffee House",
     category: "Cafe",
     suburb: "Parkville",
-    discountPercent: 20,
-    blurb: "20% off any coffee and pastry, members only, all day.",
+    discountPercent: 15,
+    blurb: "15% off any coffee and pastry, members only, all day.",
   },
   {
     name: "Example: Lygon St Pizzeria",

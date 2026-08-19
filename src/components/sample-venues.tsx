@@ -5,8 +5,10 @@ export function SampleVenues() {
     <section className="px-5 py-8">
       <div className="mx-auto max-w-3xl">
         <div className="flex items-baseline justify-between gap-3">
-          <h2 className="text-xl font-bold text-foreground">What it&rsquo;ll look like</h2>
-          <span className="rounded-full bg-surface px-3 py-1 text-xs font-semibold text-accent">
+          <h2 className="font-heading text-xl font-bold text-foreground">
+            What it&rsquo;ll look like
+          </h2>
+          <span className="rounded-full bg-surface-warm px-3 py-1 text-xs font-semibold text-accent-warm">
             Example venues — not signed up yet
           </span>
         </div>
@@ -15,11 +17,18 @@ export function SampleVenues() {
           you can see the kind of offer to expect.
         </p>
         <ul className="mt-5 grid gap-4 sm:grid-cols-2">
-          {SAMPLE_VENUES.map((venue) => (
-            <li key={venue.name} className="rounded-xl border border-border p-4">
+          {SAMPLE_VENUES.map((venue, index) => (
+            <li
+              key={venue.name}
+              className="rounded-xl border border-border bg-white p-4 shadow-sm transition hover:shadow-md"
+            >
               <div className="flex items-start justify-between gap-2">
-                <p className="font-semibold text-foreground">{venue.name}</p>
-                <span className="shrink-0 rounded-full bg-accent px-2 py-0.5 text-xs font-bold text-accent-foreground">
+                <p className="font-medium text-foreground">{venue.name}</p>
+                <span
+                  className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-bold text-white ${
+                    index % 2 === 0 ? "bg-accent" : "bg-accent-warm"
+                  }`}
+                >
                   {venue.discountPercent}% off
                 </span>
               </div>

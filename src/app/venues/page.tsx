@@ -15,7 +15,7 @@ export default function VenuesPage() {
       <SiteHeader />
       <main className="flex-1 px-5 py-10">
         <div className="mx-auto max-w-3xl">
-          <h1 className="text-3xl font-extrabold tracking-tight text-foreground">
+          <h1 className="font-heading text-3xl font-extrabold tracking-tight text-foreground">
             Reach students near campus. It costs nothing.
           </h1>
           <p className="mt-3 text-lg text-muted">
@@ -24,8 +24,10 @@ export default function VenuesPage() {
             not something available to any walk-in student. You set the offer and the hours it
             applies. We bring the members.
           </p>
-          <div className="mt-8 rounded-2xl border border-border bg-white p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-foreground">Register your interest</h2>
+          <div className="mt-8 rounded-2xl border border-border bg-white p-6 shadow-sm ring-1 ring-black/5 sm:p-8">
+            <h2 className="font-heading text-xl font-bold text-foreground">
+              Register your interest
+            </h2>
             <p className="mt-1 text-sm text-muted">
               We&rsquo;ll follow up by email — no commitment yet.
             </p>

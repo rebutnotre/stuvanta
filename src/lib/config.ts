@@ -5,7 +5,7 @@ export const CAMPUS_OPTIONS = ["University of Melbourne (Parkville)"] as const;
 export const SEMESTER_PRICE_DISPLAY = "$15";
 export const SEMESTER_PRICE_GST_NOTE = "GST inclusive";
 
-export const MIN_DISCOUNT_PERCENT = 20;
+export const MIN_DISCOUNT_PERCENT = 15;
 
 export const COURSE_YEAR_OPTIONS = [
   "1st year",

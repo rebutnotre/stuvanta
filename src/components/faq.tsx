@@ -30,10 +30,15 @@ export function Faq() {
   return (
     <section className="px-5 py-8">
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-xl font-bold text-foreground">FAQ</h2>
-        <dl className="mt-5 divide-y divide-border">
-          {FAQS.map((faq) => (
-            <div key={faq.question} className="py-4">
+        <h2 className="font-heading text-xl font-bold text-foreground">FAQ</h2>
+        <dl className="mt-5 space-y-3">
+          {FAQS.map((faq, index) => (
+            <div
+              key={faq.question}
+              className={`rounded-lg border-l-4 bg-white py-3 pl-4 pr-2 ${
+                index % 2 === 0 ? "border-accent" : "border-accent-warm"
+              }`}
+            >
               <dt className="font-semibold text-foreground">{faq.question}</dt>
               <dd className="mt-1 text-sm text-muted">{faq.answer}</dd>
             </div>

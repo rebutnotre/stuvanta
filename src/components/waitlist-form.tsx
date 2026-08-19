@@ -20,8 +20,8 @@ export function WaitlistForm() {
   }, [state]);
 
   return (
-    <div id="waitlist" className="rounded-2xl border border-border bg-white p-6 sm:p-8">
-      <h2 className="text-xl font-bold text-foreground">Join the waitlist</h2>
+    <div id="waitlist" className="rounded-2xl border border-border bg-white p-6 shadow-sm ring-1 ring-black/5 sm:p-8">
+      <h2 className="font-heading text-xl font-bold text-foreground">Join the waitlist</h2>
       <p className="mt-1 text-sm text-muted">
         Two minutes. We&rsquo;ll email you the moment membership opens.
       </p>

@@ -9,23 +9,30 @@
 :root {
   --background: #ffffff;
   --surface: #f4faf6;
+  --surface-warm: #fdf5e9;
   --foreground: #0f172a;
   --muted: #475569;
   --accent: #047857;
   --accent-foreground: #ffffff;
+  --accent-warm: #b45309;
+  --accent-warm-foreground: #ffffff;
   --border: #e2e8f0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-warm: var(--surface-warm);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-warm: var(--accent-warm);
+  --color-accent-warm-foreground: var(--accent-warm-foreground);
   --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sora);
 }
 
 html {

@@ -19,14 +19,15 @@ export function BreakEven() {
             <p className="mt-1 text-sm text-muted">Minimum discount, every venue</p>
           </div>
           <div>
-            <p className="font-heading text-3xl font-extrabold text-accent">2 dinners</p>
+            <p className="font-heading text-3xl font-extrabold text-accent">4 visits</p>
             <p className="mt-1 text-sm text-muted">And it&rsquo;s paid for itself</p>
           </div>
         </div>
         <p className="mt-5 text-sm text-muted">
-          Example: spend $50 on a meal at a member venue, save $7.50 with a{" "}
-          {MIN_DISCOUNT_PERCENT}% discount. Do that twice in the semester and you&rsquo;ve
-          already broken even — everything after that is money back in your pocket.
+          Example: spend $25 on a coffee run or a cheap meal at a member venue, save $3.75 with
+          a {MIN_DISCOUNT_PERCENT}% discount. Do that four times in the semester — about once a
+          month — and you&rsquo;ve already broken even. Everything after that is money back in
+          your pocket.
         </p>
       </div>
     </section>

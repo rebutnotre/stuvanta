@@ -51,11 +51,18 @@ npm install
    [`supabase/schema.sql`](supabase/schema.sql), and click **Run**. This
    creates the two tables (`waitlist_signups`, `venue_leads`) and locks them
    down so the public site can only insert rows, never read them back.
-3. Open **Project Settings > API**. You'll need three values from here in
-   the next step:
+3. Open **Project Settings** (gear icon, bottom of the left sidebar) **>
+   API Keys**. You'll need three values from here in the next step:
    - **Project URL**
-   - **anon / public** key
-   - **service_role** key (keep this one secret — it has full access)
+   - **Publishable key** (safe to expose to the browser)
+   - **Secret key** (keep this one secret — it has full access, bypasses
+     all the RLS restrictions)
+
+   If this is a brand-new project and you only see a "Legacy API Keys" tab
+   with `anon` / `service_role` keys, click **Create new API keys** to get
+   the current publishable/secret pair instead — Supabase is retiring the
+   legacy keys by the end of 2026, so there's no reason to start on them
+   now.
 
 ## 4. Set up Resend (confirmation emails)
 
@@ -77,9 +84,9 @@ Open `.env.local` and fill in:
 
 | Variable | Where it comes from |
 | --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → API |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Project Settings → API |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API (secret) |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → API Keys |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase → Project Settings → API Keys → Publishable key |
+| `SUPABASE_SECRET_KEY` | Supabase → Project Settings → API Keys → Secret keys (keep private) |
 | `RESEND_API_KEY` | Resend → API Keys |
 | `EMAIL_FROM` | Leave blank to use `onboarding@resend.dev` |
 | `ADMIN_NOTIFICATION_EMAIL` | The email address venue leads get sent to (e.g. your own) |

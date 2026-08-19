@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 
 /**
  * Server-only clients. Never import this file from a "use client" component —
- * the service role key must not reach the browser.
+ * the secret key must not reach the browser.
  */
 
 function requiredEnv(name: string): string {
@@ -14,26 +14,28 @@ function requiredEnv(name: string): string {
 }
 
 /**
- * Anon-key client, restricted by the RLS policies in supabase/schema.sql
- * (public can INSERT into waitlist_signups / venue_leads, nothing else).
- * Used by the public form Server Actions.
+ * Publishable-key client (Supabase's current name for the old "anon" key —
+ * same low-privilege behavior, restricted by the RLS policies in
+ * supabase/schema.sql: public can INSERT into waitlist_signups /
+ * venue_leads, nothing else). Used by the public form Server Actions.
  */
 export function getSupabasePublicClient() {
   return createClient(
     requiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
-    requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY"),
+    requiredEnv("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"),
     { auth: { persistSession: false } },
   );
 }
 
 /**
- * Service-role client that bypasses RLS. Only ever call this from code
- * reached through the /admin password gate (see src/proxy.ts).
+ * Secret-key client (Supabase's current name for the old "service_role"
+ * key — bypasses RLS the same way). Only ever call this from code reached
+ * through the /admin password gate (see src/proxy.ts).
  */
 export function getSupabaseAdminClient() {
   return createClient(
     requiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
-    requiredEnv("SUPABASE_SERVICE_ROLE_KEY"),
+    requiredEnv("SUPABASE_SECRET_KEY"),
     { auth: { persistSession: false } },
   );
 }

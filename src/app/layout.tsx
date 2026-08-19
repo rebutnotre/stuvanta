@@ -21,6 +21,11 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
+  // Needed to resolve absolute URLs for the auto-generated og:image/
+  // twitter:image tags (from src/app/opengraph-image.png) — without it,
+  // Next.js falls back to localhost in production. Update if a custom
+  // domain replaces the Vercel one.
+  metadataBase: new URL("https://stuvanta.vercel.app"),
   title: "Stuvanta — Student discounts near University of Melbourne",
   description:
     "One membership, real discounts at venues near campus. Join the waitlist.",

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   BUSINESS_NAME,
   CAMPUS_OPTIONS,
@@ -19,14 +20,20 @@ export function Hero() {
         className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-accent-warm/10 blur-3xl"
       />
       <div className="relative mx-auto max-w-3xl text-center">
-        <p className="font-heading text-2xl font-extrabold tracking-tight text-foreground">
-          {BUSINESS_NAME}
-        </p>
-        <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-accent">
+        <Image
+          src="/logo.png"
+          alt={BUSINESS_NAME}
+          width={396}
+          height={370}
+          priority
+          className="mx-auto h-20 w-auto sm:h-24"
+        />
+        <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-accent">
           Launching at {CAMPUS_OPTIONS[0]}
         </p>
         <h1 className="mt-3 font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-          Students save more. Venues sell more.
+          Students <span className="text-accent">save more</span>. Venues{" "}
+          <span className="text-accent-warm">sell more</span>.
         </h1>
         <p className="mt-4 text-lg text-muted">
           {SEMESTER_PRICE_DISPLAY} a semester ({SEMESTER_PRICE_GST_NOTE}) gets you{" "}

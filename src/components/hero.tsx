@@ -22,7 +22,7 @@ export function Hero() {
           Launching at {CAMPUS_OPTIONS[0]}
         </p>
         <h1 className="mt-3 font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-          Real discounts near campus. Not the ones every student already gets.
+          Students save more. Venues sell more.
         </h1>
         <p className="mt-4 text-lg text-muted">
           {SEMESTER_PRICE_DISPLAY} a semester ({SEMESTER_PRICE_GST_NOTE}) gets you{" "}

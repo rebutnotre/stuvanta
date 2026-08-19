@@ -16,5 +16,9 @@ export function getResendClient() {
 /**
  * Resend's shared sandbox sender — works with zero domain setup. Swap to a
  * verified custom domain address later via the EMAIL_FROM env var.
+ *
+ * Uses `||` rather than `??`: an env var left blank in the Vercel dashboard
+ * is stored as an empty string, not left unset, so `??` would silently pass
+ * "" to Resend as the from address and every send would fail.
  */
-export const EMAIL_FROM = process.env.EMAIL_FROM ?? "Stuvanta <onboarding@resend.dev>";
+export const EMAIL_FROM = process.env.EMAIL_FROM || "Stuvanta <onboarding@resend.dev>";
